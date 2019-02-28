@@ -1,0 +1,193 @@
+$text-font: 'Source Sans Pro';
+$title-font: 'Caslon';
+$primary: #333333;
+$background: #FFF;
+$secondary: #333333;
+
+@font-face {
+  font-family: Caslon;
+  src: url(resources/caslon.ttf);
+}
+
+
+h1 {
+  letter-spacing: 1;
+  font-weight: 100;
+  font-family: $title-font;
+  margin-bottom: 0.1em;
+  color: $primary;
+  font-size: 3.6rem;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 0;
+  // margin-left: 4rem;
+  font-weight: normal;
+  font-size: 3.6rem;
+  margin-bottom: 2rem;
+  font-family: $title-font;
+  color: $primary;
+  letter-spacing: 1;
+}
+
+h3 {
+  letter-spacing: normal;
+  font-size: 1.6em;
+  font-weight: normal;
+  font-family: $text-font;
+  color: $secondary;
+}
+
+p {
+  display: inline-block;
+  font-family: $text-font;
+  font-size: 1.6em;
+  width: 25rem;
+  color: $secondary;
+  a, a:visited {
+    color: $primary;
+    text-decoration: none;
+  }
+}
+
+br {
+  line-height: 150%;
+}
+
+body {
+  padding: 0;
+  padding-bottom: 0.5em;
+  margin: 0;
+  background-color: $background;
+}
+
+nav ul {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  background-color: $background;
+  width: 100%;
+  margin: 0;
+  padding: 0.5em 0;
+  height: 2.3rem;
+  z-index: 1;
+
+  li {
+    padding: 0.2em 1em;
+    border-left: solid 2px $primary;
+    display: inline-block;
+
+    &:first-child {
+      border-left:none;
+    }
+  }
+}
+
+li > a {
+  font-size: 1.4em;
+  font-family: $text-font;
+  text-decoration: none;
+  cursor: pointer;
+  color: $secondary;
+
+  :visited {
+    color: $secondary;
+  }
+}
+
+.arrow {
+  cursor: pointer;
+  width: 2.5em;
+  display: block;
+  margin: 0 auto 0 auto;
+}
+#contact {
+  text-align: center;
+  padding-bottom: 3em;
+
+  h2 {
+    margin-left: 0;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .flex {
+    margin-top: 6rem;
+  }
+  img {
+    width: 4em;
+    margin: 0 4rem;
+    display: inline-block;
+  }
+}
+
+#aboutme {
+  position: relative;
+  img {
+    margin-top: 2em;
+    left: 52%;
+    width: 20rem;
+    height: 30rem;
+    position: absolute;
+  }
+  p {
+    margin-top: 2em;
+    right: 52%;
+    text-align: right;
+    position: absolute;
+  }
+  margin-bottom: 4em;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#home {
+  margin-top: 3.3rem;
+  height: 27vh;
+  padding: 30vh 0;
+  text-align: center;
+  text-align: center;
+}
+
+#aboutme, #projects {
+  min-height: 87vh;
+}
+
+#aboutme, #projects, #contact {
+  padding-top: 13vh;
+}
+
+.project {
+  margin-bottom: 4em;
+  position: relative;
+  height: 12em;
+  h3 {
+    top: 0;
+    position: absolute;
+    right: 52%;
+    margin-top: 1rem;
+    vertical-align: top;
+    display: inline-block;
+    font-family: $title-font;
+    color: $primary;
+    font-size: 2.7em;
+  }
+  a,a:visited {
+    color: $primary;
+    text-decoration: none;
+  }
+  a:hover{
+    text-decoration: underline;
+  }
+  p {
+    top: 0;
+    position: absolute;
+    left: 52%;
+  }
+}
