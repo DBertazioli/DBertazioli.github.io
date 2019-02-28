@@ -1,35 +1,35 @@
-//parts of the code written following this tic tac toe ai tutorial: https://mostafa-samir.github.io/Tic-Tac-Toe-AI/
+//inspired by this tic tac toe ai tutorial: https://mostafa-samir.github.io/Tic-Tac-Toe-AI/, much thanks to the author!
 
-var chosenSymbol;
-var aiSymbol;
+var symb;
+var ai_symb;
 
 var game;
 
 window.onload = function() {
-  startNewGame();
+  start_it();
 
   $('#prompt button').click(function() {
     if ($(this).hasClass("button-x")) {
-      chosenSymbol = "X";
-      aiSymbol = "O";
+      symb = "X";
+      ai_symb = "O";
     } else if ($(this).hasClass("button-o")) {
-      chosenSymbol = "O";
-      aiSymbol = "X";
+      symb = "O";
+      ai_symb = "X";
     }
     $('#prompt').removeClass('loaded');
     setTimeout(function() { $('#prompt').addClass('hidden'); }, 500);
   });
 
   $('#container div').click(function() {
-    if (chosenSymbol !== "") {
+    if (symb !== "") {
       for (var i = 0; i < 9; i++) {
         if ($(this).hasClass("field" + i) && game.currentState.board[i] === "E") {
-          $(this).html("<h3>" + chosenSymbol + "</h3>");
+          $(this).html("<h3>" + symb + "</h3>");
           var next = new State(game.currentState);
-          next.board[i] = chosenSymbol;
+          next.board[i] = symb;
           next.advanceTurn();
           
-          next.turn = aiSymbol;
+          next.turn = ai_symb;
           game.advanceTo(next);
         }
       }
@@ -41,11 +41,11 @@ window.onload = function() {
     setTimeout(function() {
       $("#gameoverScreen").addClass("hidden")
     }, 500);
-    startNewGame();
+    start_it();
   });
 }
 
-var startNewGame = function() {
+var start_it = function() {
   for (var i = 0; i < 9; i++) {
     $(".field" + i).html("");
   }
@@ -54,18 +54,18 @@ var startNewGame = function() {
   game = new Game();
 }
 
-var AIAction = function(pos) {
+var ai_mv = function(pos) {
 
-  this.movePosition = pos;
+  this.mv_pos = pos;
   this.minimaxVal = 0;
 
   this.applyTo = function(state) {
     var next = new State(state);
 
-    next.board[this.movePosition] = state.turn;
+    next.board[this.mv_pos] = state.turn;
 
-    if (state.turn === aiSymbol)
-      next.aiMovesCount++;
+    if (state.turn === ai_symb)
+      next.ai_n_mv++;
 
     next.advanceTurn();
 
@@ -80,7 +80,7 @@ function minimaxValue(state) {
     } else {
       var stateScore;
 
-      if (state.turn === chosenSymbol) {
+      if (state.turn === symb) {
         stateScore = -100;
       }
       else {
@@ -88,7 +88,7 @@ function minimaxValue(state) {
       }
       
       var availableNextStates = state.emptyCells().map(function(pos) {
-        var action = new AIAction(pos);
+        var action = new ai_mv(pos);
 
         var nextState = action.applyTo(state);
 
@@ -97,7 +97,7 @@ function minimaxValue(state) {
 
       availableNextStates.forEach(function(nextState) {
         var nextScore = minimaxValue(nextState);
-        if (state.turn === chosenSymbol) {
+        if (state.turn === symb) {
           if (nextScore > stateScore)
             stateScore = nextScore;
         } else {
@@ -110,10 +110,10 @@ function minimaxValue(state) {
     }
   }
 
-  function takeMove(turn) {
+  function mv(turn) {
    
     var availableActions = game.currentState.emptyCells().map(function(pos) {
-      var action = new AIAction(pos);
+      var action = new ai_mv(pos);
       var next = action.applyTo(game.currentState);
 
       action.minimaxVal = minimaxValue(next);
@@ -135,7 +135,7 @@ function minimaxValue(state) {
 
     var nextAction = chosenAction.applyTo(game.currentState);
 
-    $(".field" + chosenAction.movePosition).html("<h3>" + aiSymbol + "</h3>");
+    $(".field" + chosenAction.mv_pos).html("<h3>" + ai_symb + "</h3>");
 
     game.advanceTo(nextAction);
   }
@@ -143,7 +143,7 @@ function minimaxValue(state) {
 var State = function(old) {
   this.turn = "";
 
-  this.aiMovesCount = 0;
+  this.ai_n_mv = 0;
 
   this.board = [];
 
@@ -156,13 +156,13 @@ var State = function(old) {
       this.board[i] = old.board[i];
     }
 
-    this.aiMovesCount = old.aiMovesCount;
+    this.ai_n_mv = old.ai_n_mv;
     this.result = old.result;
     this.turn = old.turn;
   }
  
   this.advanceTurn = function() {
-    this.turn = (this.turn === chosenSymbol) ? aiSymbol : chosenSymbol;
+    this.turn = (this.turn === symb) ? ai_symb : symb;
   }
 
   this.emptyCells = function() {
@@ -178,9 +178,9 @@ var State = function(old) {
   this.isTerminal = function() {
   
     var board = this.board.map(function(value) {
-      if(value === aiSymbol) {
+      if(value === ai_symb) {
         return 1;
-      } else if(value === chosenSymbol) {
+      } else if(value === symb) {
         return -1;
       } else {
         return 0;
@@ -207,10 +207,10 @@ var State = function(old) {
     counts[7] = board2D[2][0] + board2D[1][1] + board2D[0][2];
     
     if(counts.indexOf(3) !== -1) {
-      this.result = aiSymbol;
+      this.result = ai_symb;
       return true;
     } else if(counts.indexOf(-3) !== -1) {
-      this.result = chosenSymbol;
+      this.result = symb;
       return true;
     }
     
@@ -246,16 +246,16 @@ var Game = function() {
 
       var text = "";
 
-      if (_state.result === chosenSymbol) {
+      if (_state.result === symb) {
         text = "You won.";
-      } else if (_state.result === aiSymbol) {
+      } else if (_state.result === ai_symb) {
         text = "You lost.";
       } else {
         text = "Its a draw.";
       }
       $(".informationText").text(text);
-    } else if(_state.turn === aiSymbol) {    
-      takeMove(aiSymbol);
+    } else if(_state.turn === ai_symb) {    
+      mv(ai_symb);
     }
   };
 
@@ -267,10 +267,10 @@ var Game = function() {
 };
 
 Game.score = function(_state) {
-  if (_state.result === chosenSymbol) {
-    return 10 - _state.aiMovesCount;
-  } else if (_state.result === aiSymbol) {
-    return -10 + _state.aiMovesCount;
+  if (_state.result === symb) {
+    return 10 - _state.ai_n_mv;
+  } else if (_state.result === ai_symb) {
+    return -10 + _state.ai_n_mv;
   } else {
     return 0;
   }
