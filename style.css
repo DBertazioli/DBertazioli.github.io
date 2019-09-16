@@ -1,7 +1,7 @@
 @font-face{font-family:Caslon;src:url(resources/caslon.ttf)}
 h1{font-weight:100;margin-bottom:.1em}
 h1,h2{letter-spacing:1;font-family:Caslon;color:#333;font-size:3.6rem}
-h2{text-align:center;margin-top:0;font-weight:400;margin-bottom:2rem}
+h2{text-align:center;margin-top:0;font-weight:400;margin-bottom:2rem;font-size:2.6rem}
 h3{letter-spacing:normal;font-weight:400}
 h3,p{font-size:1.6em;font-family:Source Sans Pro;color:#333}
 p{display:inline-block;width:45rem}
@@ -19,9 +19,12 @@ li>a,li>a :visited{color:#333}.arrow{cursor:pointer;width:2.5em;display:block;ma
 #contact .flex{margin-top:6rem}
 #contact img{width:4em;margin:0 4rem;display:inline-block}
 #aboutme{position:relative;margin-bottom:4em}
-#aboutme img{left:52%;width:40rem;height:22.5rem}
-#aboutme img{margin-top:5em;position:absolute},#aboutme p{margin-top:2em;position:absolute}
+#aboutme img{left:52%;width:40%;}
+#aboutme img{margin-top:3em;position:absolute},#aboutme p{margin-top:2em;position:absolute}
 #aboutme p{display:inline-block;width:55rem;left:56%;text-align:right}.flex{display:flex;justify-content:center;align-items:center}
-#home{margin-top:3.3rem;height:27vh;padding:30vh 0;text-align:center}
-#aboutme,#projects{min-height:70vh}
+#home{  background-image: url("img/bg1.png");z-index: -1;background-size: 100%;  background-repeat: no-repeat;background-position:center;margin-top:.3rem;height:27vh;padding:30vh 0;text-align:center}
+#home{padding-top:18vh;min-height:53vh}
+#aboutme,#projects{ min-height:70vh}
 #aboutme,#contact,#projects{padding-top:10vh}.project{margin-bottom:4em;position:relative;height:5em}.project h3{top:0;position:absolute;right:54%;margin-top:1rem;vertical-align:top;display:inline-block;font-family:Caslon;color:#333;font-size:2.7em}.project a,.project a:visited{color:#333;text-decoration:none}.project a:hover{text-decoration:underline}.project p{top:0;position:absolute;left:52%}
+
+
