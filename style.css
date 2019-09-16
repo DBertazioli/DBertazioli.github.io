@@ -19,9 +19,10 @@ li>a,li>a :visited{color:#333}.arrow{cursor:pointer;width:2.5em;display:block;ma
 #contact .flex{margin-top:6rem}
 #contact img{width:4em;margin:0 4rem;display:inline-block}
 #aboutme{position:relative;margin-bottom:4em}
-#aboutme img{left:52%;width:40%;}
-#aboutme img{margin-top:3em;position:absolute},#aboutme p{margin-top:2em;position:absolute}
-#aboutme p{display:inline-block;width:55rem;left:56%;text-align:right}.flex{display:flex;justify-content:center;align-items:center}
+#aboutme img{left:56%;width:40%;}
+#aboutme img{margin-top:3em;position:absolute},
+#aboutme p{margin-top:2em;position:absolute;left:40%}
+#aboutme p{display:inline-block;width:55rem;right:50%;text-align:right}.flex{display:flex;justify-content:center;align-items:center}
 #home{  background-image: url("img/bg1.png");z-index: -1;background-size: 100%;  background-repeat: no-repeat;background-position:center;margin-top:.3rem;height:27vh;padding:30vh 0;text-align:center}
 #home{padding-top:18vh;min-height:53vh}
 #aboutme,#projects{ min-height:70vh}
