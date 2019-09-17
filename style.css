@@ -7,7 +7,7 @@ h3,p{font-size:1.6em;font-family:Source Sans Pro;color:#333}
 p{display:inline-block;width:45rem}
 p a,p a:visited{color:#333;text-decoration:none}
 br{line-height:150%}
-body{padding:0;padding-bottom:.5em}
+body{min-width:1600px;padding:0;padding-bottom:.5em}
 body,nav ul{margin:0;background-color:#fff}
 nav ul{position:fixed;top:0;right:0;display:flex;justify-content:flex-end;width:100%;padding:.5em 0;height:2.3rem;z-index:1}
 nav ul li{padding:.2em 1em;border-left:2px solid #333;display:inline-block}
